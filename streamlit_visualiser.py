@@ -8,7 +8,6 @@ Created on Wed Apr 28 13:40:55 2021
 
 import spacy
 import os
-from spacy import displacy
 import streamlit as st
 import spacy_streamlit
 
