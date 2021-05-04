@@ -1,0 +1,10 @@
+nohup: ignoring input
+2021-04-28 15:21:33.156050: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /project/soft/linux64/src/gsl/2.4/lib64:/project/soft/linux64/src/gsl/2.4/lib:/usr/pgsql-12/lib:
+2021-04-28 15:21:33.156081: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+  0%|          | 0/782 [00:00<?, ?it/s] 17%|█▋        | 135/782 [00:00<00:00, 1348.30it/s] 35%|███▍      | 272/782 [00:00<00:00, 1352.63it/s] 54%|█████▍    | 423/782 [00:00<00:00, 1395.98it/s] 74%|███████▍  | 580/782 [00:00<00:00, 1441.91it/s] 97%|█████████▋| 762/782 [00:00<00:00, 1536.97it/s]100%|██████████| 782/782 [00:00<00:00, 1528.43it/s]
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
