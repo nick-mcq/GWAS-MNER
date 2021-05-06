@@ -1,0 +1,114 @@
+nohup: ignoring input
+2021-05-05 16:00:51.886737: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /project/soft/linux64/src/gsl/2.4/lib64:/project/soft/linux64/src/gsl/2.4/lib:/usr/pgsql-12/lib:
+2021-05-05 16:00:51.886788: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+  0%|          | 0/3042 [00:00<?, ?it/s]  4%|▍         | 132/3042 [00:00<00:02, 1309.16it/s]  9%|▉         | 286/3042 [00:00<00:02, 1369.93it/s] 15%|█▍        | 451/3042 [00:00<00:01, 1442.90it/s] 21%|██        | 632/3042 [00:00<00:01, 1536.13it/s] 27%|██▋       | 819/3042 [00:00<00:01, 1621.39it/s] 33%|███▎      | 1008/3042 [00:00<00:01, 1691.09it/s] 39%|███▉      | 1201/3042 [00:00<00:01, 1756.02it/s] 46%|████▌     | 1388/3042 [00:00<00:00, 1786.49it/s] 52%|█████▏    | 1580/3042 [00:00<00:00, 1824.27it/s] 59%|█████▊    | 1782/3042 [00:01<00:00, 1876.48it/s] 65%|██████▍   | 1977/3042 [00:01<00:00, 1896.37it/s] 71%|███████▏  | 2172/3042 [00:01<00:00, 1911.20it/s] 78%|███████▊  | 2366/3042 [00:01<00:00, 1919.29it/s] 84%|████████▍ | 2569/3042 [00:01<00:00, 1950.21it/s] 91%|█████████ | 2775/3042 [00:01<00:00, 1979.50it/s] 98%|█████████▊| 2975/3042 [00:01<00:00, 1984.26it/s]100%|██████████| 3042/3042 [00:01<00:00, 1856.17it/s]
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
+Skipping entity
