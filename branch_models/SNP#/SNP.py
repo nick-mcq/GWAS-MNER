@@ -86,9 +86,9 @@ with open('/project/home20/nam220/NER/NLP/DEV_DATA', 'a') as out_file:
         
         if len(re.findall(r"([^.]*? [0-9]+,[0-9]+ S?N?P?s?[^.]*.)", n)) <= 1 and len(re.findall(r"([^.]*?[0-9]+,[0-9]+,[0-9]+ ?S?N?P?s?[^.]*.)", n)) <= 1 and len(re.findall(r"([^.]*?[0-9][0-9.]+ ?million ?S?N?P?[^.]*?)", n, re.IGNORECASE)) <= 1:
         
-            match_one = re.search(r" ([0-9]+,[0-9]+ S?N?P?s?)", n)
-            match_two = re.search(r"([0-9]+,[0-9]+,[0-9]+ ?S?N?P?s?)", n)
-            match_mil = re.search(r"([0-9][0-9.]+ ?million ?S?N?P?)", n, re.IGNORECASE)
+            match_one = re.search(r" ([0-9]+,[0-9]+) ", n)
+            match_two = re.search(r"([0-9]+,[0-9]+,[0-9]+)", n)
+            match_mil = re.search(r"([0-9][0-9.]+ ?million)", n, re.IGNORECASE)
         
         
         
@@ -99,22 +99,22 @@ with open('/project/home20/nam220/NER/NLP/DEV_DATA', 'a') as out_file:
                     
                     if match_mil:
                         
-                        content = (n, {'entities': [(match_one.start(), match_one.end(), 'Total SNPs'), (match_two.start(), match_two.end(), 'Total SNPs'), (match_mil.start(), match_mil.end(), 'Total SNPs')]})
+                        content = (n, {'entities': [(match_one.start()+1, match_one.end()-1, 'Total SNPs'), (match_two.start(), match_two.end(), 'Total SNPs'), (match_mil.start(), match_mil.end(), 'Total SNPs')]})
                         tuple_list.append(content)
                         
                     else: 
                         
-                        content = (n, {'entities': [(match_one.start(), match_one.end(), 'Total SNPs'), (match_two.start(), match_two.end(), 'Total SNPs')]})
+                        content = (n, {'entities': [(match_one.start()+1, match_one.end()-1, 'Total SNPs'), (match_two.start(), match_two.end(), 'Total SNPs')]})
                         tuple_list.append(content)
             
                 elif match_mil:
                     
-                    content = (n, {'entities': [(match_one.start(), match_one.end(), 'Total SNPs'), (match_mil.start(), match_mil.end(), 'Total SNPs')]})
+                    content = (n, {'entities': [(match_one.start()+1, match_one.end()-1, 'Total SNPs'), (match_mil.start(), match_mil.end(), 'Total SNPs')]})
                     tuple_list.append(content)
                     
                 else:
             
-                    content = (n, {'entities': [(match_one.start(), match_one.end(), 'Total SNPs')]})
+                    content = (n, {'entities': [(match_one.start()+1, match_one.end()-1, 'Total SNPs')]})
                     tuple_list.append(content)
             
             elif match_two:
