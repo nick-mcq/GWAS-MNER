@@ -86,7 +86,7 @@ with open('/project/home20/nam220/NER/NLP/DEV_DATA', 'a') as out_file:
         
         if len(re.findall(r"([^.]*? [0-9]+,[0-9]+ S?N?P?s?[^.]*.)", n)) <= 1 and len(re.findall(r"([^.]*?[0-9]+,[0-9]+,[0-9]+ ?S?N?P?s?[^.]*.)", n)) <= 1 and len(re.findall(r"([^.]*?[0-9][0-9.]+ ?million ?S?N?P?[^.]*?)", n, re.IGNORECASE)) <= 1:
         
-            match_one = re.search(r"( [0-9]+,[0-9]+ S?N?P?s?)", n)
+            match_one = re.search(r" ([0-9]+,[0-9]+ S?N?P?s?)", n)
             match_two = re.search(r"([0-9]+,[0-9]+,[0-9]+ ?S?N?P?s?)", n)
             match_mil = re.search(r"([0-9][0-9.]+ ?million ?S?N?P?)", n, re.IGNORECASE)
         
