@@ -1,0 +1,39 @@
+nohup: ignoring input
+2021-05-24 13:20:33.575142: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /project/soft/linux64/src/gsl/2.4/lib64:/project/soft/linux64/src/gsl/2.4/lib:/usr/pgsql-12/lib:
+2021-05-24 13:20:33.575176: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+[2021-05-24 13:20:35,315] [INFO] Set up nlp object from config
+[2021-05-24 13:20:35,325] [INFO] Pipeline: ['tok2vec', 'ner']
+[2021-05-24 13:20:35,328] [INFO] Created vocabulary
+[2021-05-24 13:20:38,711] [INFO] Added vectors: en_core_web_lg
+[2021-05-24 13:20:38,712] [INFO] Finished initializing nlp object
+[2021-05-24 13:20:43,594] [INFO] Initialized pipeline components: ['tok2vec', 'ner']
+[38;5;2m✔ Created output directory: output[0m
+[38;5;4mℹ Using CPU[0m
+[1m
+=========================== Initializing pipeline ===========================[0m
+[38;5;2m✔ Initialized pipeline[0m
+[1m
+============================= Training pipeline =============================[0m
+[38;5;4mℹ Pipeline: ['tok2vec', 'ner'][0m
+[38;5;4mℹ Initial learn rate: 0.001[0m
+E    #       LOSS TOK2VEC  LOSS NER  ENTS_F  ENTS_P  ENTS_R  SCORE 
+---  ------  ------------  --------  ------  ------  ------  ------
+  0       0          0.00     49.93    0.00    0.00    0.00    0.00
+  0     200         75.27    843.34   90.04   92.84   87.40    0.90
+  0     400         68.35    163.47   91.29   96.80   86.37    0.91
+  0     600         30.71    115.91   97.54   96.67   98.43    0.98
+  1     800         60.75    163.69   97.90   96.07   99.80    0.98
+  1    1000         83.21    131.13   97.47   96.53   98.43    0.97
+  2    1200        167.47    165.75   97.05   96.27   97.83    0.97
+  2    1400        310.10    183.34   98.13   96.84   99.46    0.98
+  3    1600        132.58    199.70   98.13   96.79   99.51    0.98
+  4    1800        302.88    191.17   97.48   96.17   98.82    0.97
+  5    2000        862.62    245.29   97.47   96.21   98.77    0.97
+  7    2200        661.69    244.49   97.38   96.07   98.72    0.97
+  9    2400       1176.86    211.67   97.82   96.46   99.21    0.98
+ 11    2600        991.40    162.03   97.57   96.31   98.87    0.98
+ 12    2800       1055.95    133.32   97.47   96.53   98.43    0.97
+ 14    3000       1310.77    110.17   97.60   96.27   98.97    0.98
+ 16    3200       1098.51    108.19   97.64   96.40   98.92    0.98
+[38;5;2m✔ Saved pipeline to output directory[0m
+output/model-last
