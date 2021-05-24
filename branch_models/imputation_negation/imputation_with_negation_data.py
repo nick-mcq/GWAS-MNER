@@ -34,6 +34,7 @@ content = ()
 impute_sentences =[]
 beagle_sentences =[]
 mach_sentences =[]
+unimpute_sentences =[]
 
 tuple_list = []
 
@@ -61,7 +62,12 @@ for in_file in PMC_files: #for each PMC M&M file do
         
         mach_sentences += mach_sentence
         
-all_sentences = impute_sentences + beagle_sentences + mach_sentences
+        unimpute_sentence = re.findall(r"([^.]*?unimput[^.]*\.)", data, re.IGNORECASE)
+        
+        unimpute_sentences += unimpute_sentence
+        
+        
+all_sentences = impute_sentences + beagle_sentences + mach_sentences + unimpute_sentences
 
         #content.append()
         
@@ -81,18 +87,34 @@ with open('/project/home20/nam220/NER/NLP/DEV_DATA', 'a') as out_file:
         
         entity_list = []
         
-        match_imp = re.search(r"(imput[a-z\d]+)", n) #re.IGNORECASE)
+        match_imp = re.search(r"(imput[a-z\d]+)", n)
+        match_Imp = re.search(r"(Imput[a-z\d]+)", n)
+        match_unimp = re.search(r"(unimput[a-z\d]+)", n, re.IGNORECASE)
         match_IMPUTE = re.search(r"IMPUTE", n)
         match_bea = re.search("beagle", n, re.IGNORECASE)
         match_mac = re.search(r"(mach[\d]*)", n, re.IGNORECASE)
         match_no = re.search(r"(?:^|\W)no(?:$|\W)", n, re.IGNORECASE)
         match_not = re.search(r"(?:^|\W)not(?:$|\W)", n, re.IGNORECASE)
+        match_non = re.search(r"(non-)", n, re.IGNORECASE)
+        match_un = re.search(r"(un-)", n, re.IGNORECASE)
         
         
         if match_imp:
             #print(match)
             
             info = (match_imp.start(), match_imp.end(), 'imputation')
+            entity_list.append(info)
+            
+        if match_Imp:
+            #print(match)
+            
+            info = (match_Imp.start(), match_Imp.end(), 'imputation')
+            entity_list.append(info)
+        
+        if match_unimp:
+            #print(match)
+            
+            info = (match_unimp.start(), match_unimp.end(), 'NO imputation')
             entity_list.append(info)
         
         
@@ -120,6 +142,16 @@ with open('/project/home20/nam220/NER/NLP/DEV_DATA', 'a') as out_file:
         if match_not:
             
             info = (match_not.start()+1, match_not.end()-1, 'negation')
+            entity_list.append(info)
+        
+        if match_non:
+            
+            info = (match_non.start(), match_non.end(), 'negation')
+            entity_list.append(info)
+            
+        if match_un:
+            
+            info = (match_un.start(), match_un.end(), 'negation')
             entity_list.append(info)
         
         
