@@ -86,7 +86,7 @@ def main():
       if sel=="Imputation":
          #path=model_loader("https://github.com/fm1320/IC_NLP/releases/download/V3/V3-20210203T001829Z-001.zip", "V3")   
          nlp2 = spacy.load('/Users/nicholasmcquibban/Desktop/branch_outputs/imputation_negation/output/model-best') #this will change based on which choice was made
-         raw_text = st.text_area("Enter text for entity recognition","To validate additional associated SNPs (p < 0.0001) and nominally associated candidate genes, we imputed SNPs from our GWAS using a previously published GWAS1 and the IMPUTE program. ")   
+         raw_text = st.text_area("Enter text for entity recognition","To validate additional associated SNPs (p < 0.0001) and nominally associated candidate genes, we imputed SNPs from our GWAS using a previously published GWAS1 along with both the IMPUTE and BEAGLE programs. In addition another study, which did not impute any further SNPs, served to further validate our results for candidate genes (see Supplementary Table 5) ")   
          docx = nlp2(raw_text)
          spacy_streamlit.visualize_ner(docx,labels=nlp2.get_pipe('ner').labels) 
          
@@ -107,7 +107,7 @@ def main():
       if sel=="Assays":
          #path=model_loader("https://github.com/fm1320/IC_NLP/releases/download/V3/V3-20210203T001829Z-001.zip", "V3")   
          nlp5 = spacy.load('/Users/nicholasmcquibban/Desktop/branch_outputs/assay_total/output/model-best') #this will change based on which choice was made
-         raw_text = st.text_area("Enter text for entity recognition","The 529 LCLs derived from the CAP cohort were incubated under standardized conditions for 24hr, after which MGMT transcript levels were quantified using the Illumina H8v3 beadarray (Illumina probe ILMN_1795639). Each of the studies had been conducted on different platforms (Illumina 550K for CHOP, Perlegen 600K for IMAGE, Affymetrix 500K for IMAGE II, and Illumina 1M Duo platform.")   
+         raw_text = st.text_area("Enter text for entity recognition","The 529 LCLs derived from the CAP cohort were incubated under standardized conditions for 24hr, after which MGMT transcript levels were quantified using the Illumina H8v3 beadarray. Individuals in the WHI-SHARe cohort were genotyped on the Affymetrix 6.0 array.")   
          docx = nlp5(raw_text)
          spacy_streamlit.visualize_ner(docx,labels=nlp5.get_pipe('ner').labels) 
     
