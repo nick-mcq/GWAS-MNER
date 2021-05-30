@@ -19,41 +19,6 @@ import spacy_streamlit
 #displacy.serve(doc, style="ent")
 
 
-
-def model_loader(link,foldername):
-  """
-  returns path of zipped folder with trained spacy model
-  
-  """
-  import requests
-  import zipfile
-  import tempfile
-  import spacy
-
-  dir=tempfile.gettempdir()
-
-
-  #link= "https://github.com/fm1320/IC_NLP/releases/download/V3/V3-20210203T001829Z-001.zip"
-
-  results = requests.get(link)
-  #with open(dir, 'wb') as f:
-  fp = tempfile.TemporaryFile()  
-  fp.write(results.content)
-
-
-  file = zipfile.ZipFile(fp)
-  with tempfile.TemporaryDirectory() as tmpdirname:
-    file.extractall(path=dir)
-
-  #print(dir)
-  end_path=os.path.join(dir, foldername)
-  files = os.listdir(end_path)
-  #for file in files:
-    #print(file)
-  return end_path
-
-
-
 def main():
     
     """GWAS NLP using SpaCy-Streamlit"""
@@ -115,12 +80,6 @@ if __name__ == '__main__':
     main()
     
     
-    
-    
-    
-    
-    #text for platform: Total RNA from the middle temporal cortex (Brodmann areas 20 and 21) from 86 subjects was isolated and randomly hybridized to Affymetrix Human Exon 1.0 ST arrays, and quality control analysis was performed using standard methods. The effects of several methodological (day of expression hybridization, RNA integrity number (RIN)) and biological covariates (sex, age and medication) on exon–gene expression relationships were tested for significance. Of these individuals, 71 had participated in a published epilepsy genome-wide association study, and, therefore, genotyping data were available. Details of sample collection and genotyping quality control steps have been published previously66. These samples were assayed with Illumina HumanHap550v3 (N = 44) and Illumina Human610-Quadv1 (N = 27) arrays.
-    #text for imputation: To validate additional associated SNPs (p < 0.0001) and nominally associated candidate genes, we imputed SNPs from our GWAS using a previously published BEAGLE GWAS1 and the IMPUTE program. 
     
     
     
