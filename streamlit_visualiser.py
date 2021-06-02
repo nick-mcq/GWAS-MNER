@@ -23,20 +23,68 @@ def main():
     
     """GWAS NLP using SpaCy-Streamlit"""
     st.title("GWAS Metadata Extraction: GWAS MNER")
-    menu = ["Home","NER"]
-    choice = st.sidebar.selectbox("Menu",menu)
+    choice = st.sidebar.selectbox("Menu", ["Home","NER"])
+    st.sidebar.write('')
+    st.sidebar.write('')
+     
     if choice == "Home":
-      
-      link = 'In order to see the source code for this website, in addition to the code used to develop each branch of the GWAS MNER, you can check out my GitHub repository here: https://github.com/ND2021-ICL/pipe-ABC'
-      st.write("""Welcome to my NLP tool, developped to use NER (Named Entity Recognition) as a method for identifying key metadata elements in scientific texts pertinent to GWAS, or Genome Wide Association Studies.""")
+        
+      st.subheader("Abstract")
+
+      link = 'Source code for the full development of GWAS MNER can be viewed at: https://github.com/nick-mcq/GWAS-MNER'
+      st.write("""Welcome to my NLP tool, developped to use NER (Named Entity Recognition) as a method for identifying key metadata elements in scientific texts pertinent to GWAS, or Genome Wide Association Studies. """)
       st.markdown(link, unsafe_allow_html=True)
+      #st.write('')
+      st.subheader("Introduction")
+      st.markdown("""**Use the drop-down menu on the left-hand side of the page to access the NER branches. Alternatively, click on the checkboxes to reveal one or multiple sections of the project report.**""")
       st.write('')
-      st.markdown("""**Use the drop-down menu on the left-hand side of the page to get started!**""")
-      st.write('')
-      st.write("*Source for sample text used: Stein, J.L., Medland, S.E., Vasquez, A.A., Hibar, D.P., et al. (2012) Identification of common variants associated with human hippocampal and intracranial volumes. Nature genetics. [Online] 44 (5), 552–561. Available from: doi:10.1038/ng.2250.*")
-      st.subheader('***Disclaimer:***')
-      st.markdown('***The NLP package used in this web-tool originates from SpaCy 3.0, a very recently developped package which makes use of machine learning efficiently and as accurately as possible; however as the word "learning" implies, the algorithm is not perfect and can mistakingly label entities which may "resemble" those it recognises.*** :nerd_face:')
       
+      
+      if st.button("DISCLAIMER", help="Press me to see a quick disclaimer regarding the SpaCy 3.0 software!"):
+      
+      
+          st.error('***The NLP package used in this web-tool originates from SpaCy 3.0, a very recently developped package which makes use of machine learning efficiently and as accurately as possible; however as the word "learning" implies, the algorithm is not perfect and can mistakingly label entities which may "resemble" those it recognises.*** :nerd_face:')
+      
+      
+      
+      if st.sidebar.checkbox("Methods"):
+        
+        st.subheader("Methods")
+        
+    
+        st.markdown("The NER algorithm was developped using Spacy 3.0 and the visual output was created using the StreamLit platform. All code written to train each branch model of GWAS-MNER was done so in Python 3.8. Finally, the datasets used for machine learning were initially curated through AutoCORPus, after which they were extensively sorted and adapted for training SpaCy 3.0 pipelines.")
+      
+    
+      if st.sidebar.checkbox("Results"):
+        
+        st.subheader("Results")
+        
+    
+        st.markdown("The resulting NER branches were scored for their overall accuracy in evalutaing second testing set, after learning from the inital testing set. A bar chart was generated to illustrate and compare the scores of each branch model")
+    
+    
+      if st.sidebar.checkbox("Discussion"):
+        
+        st.subheader("Discussion")
+        
+    
+        st.markdown("The accuracy of a branch can be directly correlated with the complexity of the entity with which a label is associated, as it results in more likely cases of confusion within the algorithms predetermined parameters. However, these are all variables which can be adjusted by the developper, which points towards potential for perfecting, when there is sufficient time to do so. Overall, the use of NLP and NER in particular could prove hugely valuable in automatically scraping key data for further work or documentation; the important distinction to be made in the case of this tool is that which data the user requests is customisable, opening up new possibilities in terms of user-orientated machine learning-driven results")
+    
+    
+      if st.sidebar.checkbox("Future Work"):
+        
+        st.subheader("Future Work")
+        
+    
+        st.markdown("Due to the time constraints imposed upon this project, an initially proposed multi-model version of the algorithm was not produced, such that it would combine all branches into one algorithm searching for all entities simultaneously. Further, the lack of data in regards to Perlegen assays proved detrimental in providing the algorithm with sufficient data for recognising such assays. Overall, there is room for improvement in every single branch; expanding the datasets fed into the program would prove valuable in furthering the capabilities of GWAS-MNER.")
+    
+      if st.sidebar.checkbox("Conclusion"):
+        
+        st.subheader("Conclusion")
+        
+    
+        st.markdown("In conclusion, this web-tool was developed using the output produced from the AutoCORPus program (reference needed), following an extensive curation and refinement process, to learn and accurately label key metadata in any scientific text on the topic of GWAS. Moreover, this process could be adapted for publications covering other topics, or even multiple topics, based on how much data is fed into the NLP algorithm.")
+    
     elif choice == "NER":
       st.subheader("Named Entity Recognition")
       # Add a selectbox to the sidebar:
@@ -44,7 +92,7 @@ def main():
       if sel=="Platform":
          #path=model_loader("https://github.com/fm1320/IC_NLP/releases/download/V3/V3-20210203T001829Z-001.zip", "V3")   
          nlp1 = spacy.load('/Users/nicholasmcquibban/Desktop/branch_outputs/platform/output/model-best') #this will change based on which choice was made
-         raw_text = st.text_area("Enter text for entity recognition","Total RNA from the middle temporal cortex (Brodmann areas 20 and 21) from 86 subjects was isolated and randomly hybridized to Affymetrix Human Exon 1.0 ST arrays, and quality control analysis was performed using standard methods. The effects of several methodological (day of expression hybridization, RNA integrity number (RIN)) and biological covariates (sex, age and medication) on exon–gene expression relationships were tested for significance. Of these individuals, 71 had participated in a published epilepsy genome-wide association study, and, therefore, genotyping data were available. Details of sample collection and genotyping quality control steps have been published previously66. These samples were assayed with Illumina HumanHap550v3 (N = 44) and Illumina Human610-Quadv1 (N = 27) arrays.")   
+         raw_text = st.text_area("Enter text for entity recognition","Total RNA from the middle temporal cortex (Brodmann areas 20 and 21) from 86 subjects was isolated and randomly hybridized to Affymetrix Human Exon 1.0 ST arrays, and quality control analysis was performed using standard methods. The effects of several methodological (day of expression hybridization, RNA integrity number (RIN)) and biological covariates (sex, age and medication) on exon–gene expression relationships were tested for significance. Of these individuals, 71 had participated in a published epilepsy genome-wide association study, and, therefore, genotyping data were available. Details of sample collection and genotyping quality control steps have been published previously66. These samples were assayed with Illumina HumanHap550v3 (N = 44) and Illumina Human610-Quadv1 (N = 27) arrays.", help="Source: Stein, J.L., Medland, S.E., Vasquez, A.A., Hibar, D.P., et al. (2012)")   
          docx = nlp1(raw_text)
          spacy_streamlit.visualize_ner(docx,labels=nlp1.get_pipe('ner').labels) 
      
@@ -75,6 +123,8 @@ def main():
          raw_text = st.text_area("Enter text for entity recognition","The 529 LCLs derived from the CAP cohort were incubated under standardized conditions for 24hr, after which MGMT transcript levels were quantified using the Illumina H8v3 beadarray. Individuals in the WHI-SHARe cohort were genotyped on the Affymetrix 6.0 array.")   
          docx = nlp5(raw_text)
          spacy_streamlit.visualize_ner(docx,labels=nlp5.get_pipe('ner').labels) 
+         
+    
     
 if __name__ == '__main__':
     main()
