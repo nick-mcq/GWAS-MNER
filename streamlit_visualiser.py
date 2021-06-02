@@ -85,6 +85,14 @@ def main():
     
         st.markdown("In conclusion, this web-tool was developed using the output produced from the AutoCORPus program (reference needed), following an extensive curation and refinement process, to learn and accurately label key metadata in any scientific text on the topic of GWAS. Moreover, this process could be adapted for publications covering other topics, or even multiple topics, based on how much data is fed into the NLP algorithm.")
     
+      if st.sidebar.checkbox("References"):
+        
+        st.subheader("References")
+        
+    
+        st.markdown("The following references were used in this project:")
+    
+    
     elif choice == "NER":
       st.subheader("Named Entity Recognition")
       # Add a selectbox to the sidebar:
