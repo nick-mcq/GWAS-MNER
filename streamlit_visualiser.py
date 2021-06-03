@@ -31,8 +31,8 @@ def main():
         
       st.subheader("Abstract")
 
-      link = 'Source code for the full development of GWAS MNER can be viewed at: https://github.com/nick-mcq/GWAS-MNER'
-      st.write("""Welcome to my NLP tool, developped to use NER (Named Entity Recognition) as a method for identifying key metadata elements in scientific texts pertinent to GWAS, or Genome Wide Association Studies. """)
+      link = 'Source code: https://github.com/nick-mcq/GWAS-MNER'
+      st.write("""Recent advances in the availability of improved natural language processing (NLP) algorithms and models, ontologies that describe phenotypes, and different open source tools for annotation of text, enables text mining to be applied to GWAS publications to identify and extract all available association data and important genome wide association studies' (GWAS) metadata (i.e. data that describe the association data). GWAS-MNER is the culmination of these advancements; this natural language processing (NLP) tool was developed to use named entity recognition (NER) as a method for identifying key metadata elements in scientific texts specifically pertinent to GWAS. """)
       st.markdown(link, unsafe_allow_html=True)
       #st.write('')
       st.subheader("Introduction")
