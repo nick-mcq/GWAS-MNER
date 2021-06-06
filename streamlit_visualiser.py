@@ -10,7 +10,7 @@ import spacy
 import os
 import streamlit as st
 import spacy_streamlit
-
+import json
 
 #nlp = spacy.load('./output/model-best')
 #doc = nlp('These samples were assayed with Illumina HumanHap550v3 (N  = 44) and Affymetrix Human610-Quadv1 (N  = 27) arrays.')
@@ -131,13 +131,53 @@ def main():
          raw_text = st.text_area("Enter text for entity recognition","Total RNA from the middle temporal cortex (Brodmann areas 20 and 21) from 86 subjects was isolated and randomly hybridized to Affymetrix Human Exon 1.0 ST arrays, and quality control analysis was performed using standard methods. The effects of several methodological (day of expression hybridization, RNA integrity number (RIN)) and biological covariates (sex, age and medication) on exon–gene expression relationships were tested for significance. Of these individuals, 71 had participated in a published epilepsy genome-wide association study, and, therefore, genotyping data were available. Details of sample collection and genotyping quality control steps have been published previously66. These samples were assayed with Illumina HumanHap550v3 (N = 44) and Illumina Human610-Quadv1 (N = 27) arrays.", help="Source: Stein, J.L., Medland, S.E., Vasquez, A.A., Hibar, D.P., et al. (2012)")   
          docx = nlp1(raw_text)
          spacy_streamlit.visualize_ner(docx,labels=nlp1.get_pipe('ner').labels) 
-     
+         
+         st.write('')
+         
+         if st.button("DOWNLOAD"):
+             
+             
+             with open('GWASMNER_Platform.json', 'w') as json_file:
+                
+                 
+                json.dump(docx.to_json(), json_file)
+            
+             with open('GWASMNER_Platform_Trimmed.json', 'w') as dest_file:
+                 with open('GWASMNER_Platform.json', 'r') as source_file:
+                     for line in source_file:
+                         element = json.loads(line.strip())
+                         if 'tokens' in element:
+                             del element['tokens']
+                         dest_file.write(json.dumps(element))
+             
+            
+             
       if sel=="Imputation":
          #path=model_loader("https://github.com/fm1320/IC_NLP/releases/download/V3/V3-20210203T001829Z-001.zip", "V3")   
          nlp2 = spacy.load('/Users/nicholasmcquibban/Desktop/branch_outputs/imputation_negation/output/model-best') #this will change based on which choice was made
          raw_text = st.text_area("Enter text for entity recognition","To validate additional associated SNPs (p < 0.0001) and nominally associated candidate genes, we imputed SNPs from our GWAS using a previously published GWAS1 along with both the IMPUTE and BEAGLE programs. In addition another study, which did not impute any further SNPs, served to further validate our results for candidate genes (see Supplementary Table 5) ")   
          docx = nlp2(raw_text)
          spacy_streamlit.visualize_ner(docx,labels=nlp2.get_pipe('ner').labels) 
+         
+         st.write('')
+         
+         if st.button("DOWNLOAD"):
+             
+             
+             with open('GWASMNER_Imputation.json', 'w') as json_file:
+                
+                 
+                json.dump(docx.to_json(), json_file)
+            
+             with open('GWASMNER_Imputation_Trimmed.json', 'w') as dest_file:
+                 with open('GWASMNER_Imputation.json', 'r') as source_file:
+                     for line in source_file:
+                         element = json.loads(line.strip())
+                         if 'tokens' in element:
+                             del element['tokens']
+                         dest_file.write(json.dumps(element)) 
+         
+         
          
       if sel=="Total SNPs":
          #path=model_loader("https://github.com/fm1320/IC_NLP/releases/download/V3/V3-20210203T001829Z-001.zip", "V3")   
@@ -146,6 +186,26 @@ def main():
          docx = nlp3(raw_text)
          spacy_streamlit.visualize_ner(docx,labels=nlp3.get_pipe('ner').labels) 
          
+         st.write('')
+         
+         if st.button("DOWNLOAD"):
+             
+             
+             with open('GWASMNER_SNP.json', 'w') as json_file:
+                
+                 
+                json.dump(docx.to_json(), json_file)
+            
+             with open('GWASMNER_SNP_Trimmed.json', 'w') as dest_file:
+                 with open('GWASMNER_SNP.json', 'r') as source_file:
+                     for line in source_file:
+                         element = json.loads(line.strip())
+                         if 'tokens' in element:
+                             del element['tokens']
+                         dest_file.write(json.dumps(element))
+         
+         
+         
       if sel=="Quality Control":
          #path=model_loader("https://github.com/fm1320/IC_NLP/releases/download/V3/V3-20210203T001829Z-001.zip", "V3")   
          nlp4 = spacy.load('/Users/nicholasmcquibban/Desktop/branch_outputs/QC/output/model-best') #this will change based on which choice was made
@@ -153,12 +213,51 @@ def main():
          docx = nlp4(raw_text)
          spacy_streamlit.visualize_ner(docx,labels=nlp4.get_pipe('ner').labels) 
          
+         st.write('')
+         
+         if st.button("DOWNLOAD"):
+             
+             
+             with open('GWASMNER_QC.json', 'w') as json_file:
+                
+                 
+                json.dump(docx.to_json(), json_file)
+            
+             with open('GWASMNER_QC_Trimmed.json', 'w') as dest_file:
+                 with open('GWASMNER_QC.json', 'r') as source_file:
+                     for line in source_file:
+                         element = json.loads(line.strip())
+                         if 'tokens' in element:
+                             del element['tokens']
+                         dest_file.write(json.dumps(element))
+         
+         
       if sel=="Assays":
          #path=model_loader("https://github.com/fm1320/IC_NLP/releases/download/V3/V3-20210203T001829Z-001.zip", "V3")   
          nlp5 = spacy.load('/Users/nicholasmcquibban/Desktop/branch_outputs/assay_total/output/model-best') #this will change based on which choice was made
          raw_text = st.text_area("Enter text for entity recognition","The 529 LCLs derived from the CAP cohort were incubated under standardized conditions for 24hr, after which MGMT transcript levels were quantified using the Illumina H8v3 beadarray. Individuals in the WHI-SHARe cohort were genotyped on the Affymetrix 6.0 array.")   
          docx = nlp5(raw_text)
          spacy_streamlit.visualize_ner(docx,labels=nlp5.get_pipe('ner').labels) 
+         
+         st.write('')
+         
+         if st.button("DOWNLOAD"):
+             
+             
+             with open('GWASMNER_Assays.json', 'w') as json_file:
+                
+                 
+                json.dump(docx.to_json(), json_file)
+            
+             with open('GWASMNER_Assays_Trimmed.json', 'w') as dest_file:
+                 with open('GWASMNER_Assays.json', 'r') as source_file:
+                     for line in source_file:
+                         element = json.loads(line.strip())
+                         if 'tokens' in element:
+                             del element['tokens']
+                         dest_file.write(json.dumps(element))
+         
+         
          
       if st.button("DISCLAIMER", help="Press me to see a quick disclaimer regarding the SpaCy 3.0 software!"):
       
