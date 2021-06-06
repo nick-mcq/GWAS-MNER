@@ -19,34 +19,43 @@ import spacy_streamlit
 #displacy.serve(doc, style="ent")
 
 
+
+
+
 def main():
     
-    """GWAS NLP using SpaCy-Streamlit"""
+    
+    
+    st.set_page_config(page_title="Project 2: GWAS-MNER",page_icon=":floppy_disk:",layout="centered",initial_sidebar_state="expanded")
+    
+    st.markdown(""" <style> #MainMenu {visibility: hidden;} footer {visibility: hidden;} </style> """, unsafe_allow_html=True)
+  
     st.title("GWAS Metadata Extraction: GWAS MNER")
-    choice = st.sidebar.selectbox("Menu", ["Home","NER"])
+    choice = st.sidebar.selectbox("Navigate to", ["Project Report","NER web-tool"])
     st.sidebar.write('')
     st.sidebar.write('')
      
-    if choice == "Home":
+    if choice == "Project Report":
         
-      st.subheader("Abstract")
-
-      link = 'Source code: https://github.com/nick-mcq/GWAS-MNER'
-      st.write("""Recent advances in the availability of improved natural language processing (NLP) algorithms and models, ontologies that describe phenotypes, and different open source tools for annotation of text, enables text mining to be applied to GWAS publications to identify and extract all available association data and important genome wide association studies' (GWAS) metadata (i.e. data that describe the association data). GWAS-MNER is the culmination of these advancements; this natural language processing (NLP) tool was developed to use named entity recognition (NER) as a method for identifying key metadata elements in scientific texts specifically pertinent to GWAS. """)
-      st.markdown(link, unsafe_allow_html=True)
-      #st.write('')
-      st.subheader("Introduction")
-      st.markdown("""**Use the drop-down menu on the left-hand side of the page to access the NER branches. Alternatively, click on the checkboxes to reveal one or multiple sections of the project report.**""")
-      st.write('')
+      st.header("Welcome! \n Use the drop-down menu on the left-hand side of the page to access the **NER (named entity recognition) web-tool**. This project uses **NLP (natural language processing) software** to develop models which identify key elements or words in user-inputted text, based on training and testing data obtained from 1500 papers focussed on **GWAS (genome wide association studies)**.  \n\n Alternatively, click on the checkboxes to reveal one or multiple sections of the **project report**.")
+   
+    
+      empty=True
+        
       
       
-      if st.button("DISCLAIMER", help="Press me to see a quick disclaimer regarding the SpaCy 3.0 software!"):
+          
       
       
-          st.error('***The NLP package used in this web-tool originates from SpaCy 3.0, a very recently developped package which makes use of machine learning efficiently and as accurately as possible; however as the word "learning" implies, the algorithm is not perfect and can mistakingly label entities which may "resemble" those it recognises.*** :nerd_face:')
+      if st.sidebar.checkbox("Introduction"):
+        
+        st.subheader("Introduction")
+        
+    
+        st.markdown("In layman terms, the GWAS-MNER web-tool is a 'smart' algorithm which has been exposed to hundreds of PubMed articles containing specifically labelled words for the algorithm to recognise, and importantly, remember. Indeed, once it has learned these important words, known as entities, it can then attempt to read a new piece of text (submitted by you) and recognise any of those previously memorised entities! Further, this algorithm falls under a category known as machine learning, meaning that it is also capable of making an educated guess at what *might* be an entitity, if it deems the word(s) to resemble those it already knows.")
       
-      
-      
+        empty=False
+        
       if st.sidebar.checkbox("Methods"):
         
         st.subheader("Methods")
@@ -54,7 +63,8 @@ def main():
     
         st.markdown("The NER algorithm was developped using Spacy 3.0 and the visual output was created using the StreamLit platform. All code written to train each branch model of GWAS-MNER was done so in Python 3.8. Finally, the datasets used for machine learning were initially curated through AutoCORPus, after which they were extensively sorted and adapted for training SpaCy 3.0 pipelines.")
       
-    
+        empty=False
+        
       if st.sidebar.checkbox("Results"):
         
         st.subheader("Results")
@@ -62,6 +72,7 @@ def main():
     
         st.markdown("The resulting NER branches were scored for their overall accuracy in evalutaing second testing set, after learning from the inital testing set. A bar chart was generated to illustrate and compare the scores of each branch model")
     
+        empty=False
     
       if st.sidebar.checkbox("Discussion"):
         
@@ -70,6 +81,7 @@ def main():
     
         st.markdown("The accuracy of a branch can be directly correlated with the complexity of the entity with which a label is associated, as it results in more likely cases of confusion within the algorithms predetermined parameters. However, these are all variables which can be adjusted by the developper, which points towards potential for perfecting, when there is sufficient time to do so. Overall, the use of NLP and NER in particular could prove hugely valuable in automatically scraping key data for further work or documentation; the important distinction to be made in the case of this tool is that which data the user requests is customisable, opening up new possibilities in terms of user-orientated machine learning-driven results")
     
+        empty=False
     
       if st.sidebar.checkbox("Future Work"):
         
@@ -78,12 +90,16 @@ def main():
     
         st.markdown("Due to the time constraints imposed upon this project, an initially proposed multi-model version of the algorithm was not produced, such that it would combine all branches into one algorithm searching for all entities simultaneously. Further, the lack of data in regards to Perlegen assays proved detrimental in providing the algorithm with sufficient data for recognising such assays. Overall, there is room for improvement in every single branch; expanding the datasets fed into the program would prove valuable in furthering the capabilities of GWAS-MNER.")
     
+        empty=False
+        
       if st.sidebar.checkbox("Conclusion"):
         
         st.subheader("Conclusion")
         
     
         st.markdown("In conclusion, this web-tool was developed using the output produced from the AutoCORPus program (reference needed), following an extensive curation and refinement process, to learn and accurately label key metadata in any scientific text on the topic of GWAS. Moreover, this process could be adapted for publications covering other topics, or even multiple topics, based on how much data is fed into the NLP algorithm.")
+    
+        empty=False
     
       if st.sidebar.checkbox("References"):
         
@@ -92,8 +108,20 @@ def main():
     
         st.markdown("The following references were used in this project:")
     
+        empty=False
+        
+      if empty==True:
+          
+          st.subheader("Abstract")
+
+          link = 'Source code: https://github.com/nick-mcq/GWAS-MNER'
+          st.write("""Recent advances in the availability of improved natural language processing (NLP) algorithms and models, ontologies that describe phenotypes, and different open source tools for annotation of text, enables text mining to be applied to GWAS publications to identify and extract all available association data and important genome wide association studies' (GWAS) metadata (i.e. data that describe the association data). GWAS-MNER is the culmination of these advancements; this natural language processing (NLP) tool was developed to use named entity recognition (NER) as a method for identifying key metadata elements in scientific texts specifically pertinent to GWAS. """)
+          st.markdown(link, unsafe_allow_html=True)
+          #st.write('')
+          
+      
     
-    elif choice == "NER":
+    elif choice == "NER web-tool":
       st.subheader("Named Entity Recognition")
       # Add a selectbox to the sidebar:
       sel = st.sidebar.selectbox("Which entity would you like to identify?", ["Platform", "Imputation", 'Total SNPs', 'Quality Control', 'Assays'])
@@ -132,6 +160,11 @@ def main():
          docx = nlp5(raw_text)
          spacy_streamlit.visualize_ner(docx,labels=nlp5.get_pipe('ner').labels) 
          
+      if st.button("DISCLAIMER", help="Press me to see a quick disclaimer regarding the SpaCy 3.0 software!"):
+      
+      
+         st.error('***The NLP package used in this web-tool originates from SpaCy 3.0, a very recently developped package which makes use of machine learning efficiently and as accurately as possible; however as the word "learning" implies, the algorithm is not perfect and can mistakingly label entities which may "resemble" those it recognises.*** :nerd_face:')
+      
     
     
 if __name__ == '__main__':
