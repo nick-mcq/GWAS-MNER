@@ -59,7 +59,12 @@ def main():
         st.subheader("Methods")
         
     
-        st.markdown("**General workflow of Project 2: GWAS-MNER**  \n\n.")
+        st.markdown("**General workflow of Project 2: GWAS-MNER**  \n\n")
+        
+        with open('workflow.PNG') as in_file:
+            
+            st.image('https://raw.githubusercontent.com/nick-mcq/GWAS-MNER/main/workflow.PNG')
+        
       
         empty=False
         
