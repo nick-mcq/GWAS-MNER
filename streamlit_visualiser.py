@@ -37,23 +37,21 @@ def main():
      
     if choice == "Project Report":
         
-      st.header("Welcome! \n Use the drop-down menu on the left-hand side of the page to access the **NER (named entity recognition) web-tool**. This project uses **NLP (natural language processing) software** to develop models which identify key elements or words in user-inputted text, based on training and testing data obtained from 1500 papers focussed on **GWAS (genome wide association studies)**.  \n\n Alternatively, click on the checkboxes to reveal one or multiple sections of the **project report**.")
+      st.header("Welcome! \n Use the drop-down menu on the left-hand side of the page to access the **NER (named entity recognition) web-tool**. This tool uses **NLP (natural language processing) software** to develop models which identify key elements or words in user-inputted text, based on training and testing data obtained from 1200 papers focussed on **GWAS (genome wide association studies)**.  \n\n Alternatively, click on the checkboxes to reveal one or multiple sections of the **project report**. Please note that the web-page will **NOT** scroll automatically when **revealing multiple sections**.")
    
     
       empty=True
         
       
       
-          
-      
-      
       if st.sidebar.checkbox("Introduction"):
         
-        st.subheader("Introduction")
+        st.subheader("Introduction & Motivation")
         
     
-        st.markdown("In layman terms, the GWAS-MNER web-tool is a 'smart' algorithm which has been exposed to hundreds of PubMed articles containing specifically labelled words for the algorithm to recognise, and importantly, remember. Indeed, once it has learned these important words, known as entities, it can then attempt to read a new piece of text (submitted by you) and recognise any of those previously memorised entities! Further, this algorithm falls under a category known as machine learning, meaning that it is also capable of making an educated guess at what *might* be an entitity, if it deems the word(s) to resemble those it already knows.")
+        st.markdown("In layman terms, the GWAS-MNER web-tool is a 'smart' algorithm which has been exposed to hundreds of PubMed articles containing specifically labelled words for the algorithm to recognise, and importantly, remember. Indeed, once it has learned these important words, known as entities, it can then attempt to read a new piece of text (submitted by you) and recognise any of those previously memorised entities! Further, this algorithm falls under a category known as machine learning, meaning that it is also capable of making an educated guess at what *might* be an entitity, if it deems the word(s) to resemble those it already knows. Finally, the publications used to train and test GWAS-MNER models, of which there are 5 (each model is dedicated to a specific metadata category), are all GWAS publications, as this was the area of research targeted by the project.")
       
+        st.markdown("The design of this user-friendly web-tool was driven by a lack of easily deployable automated methods for grouping and extracting relevant information of interest in GWAS publications; as the creator of the tool and author of this report, I learned during my undergraduate years in molecular genetics that it was notoriously laborious to sift through swathes of GWAS publications manually in search of key methods, such as which assays were used or what kind of quality control was applied. Moreover, this machine was also developped to showcase the power of text extraction software known as AutoCORPus (Automated and Consistent Outputs from Research Publications), an automated pipeline which can parse through PubMed publications, for example, organising the text into a single JSON output split by relevant sections (Hu et al., 2021).")
         empty=False
         
       if st.sidebar.checkbox("Methods & Materials"):
@@ -61,7 +59,7 @@ def main():
         st.subheader("Methods")
         
     
-        st.markdown("The NER algorithm was developped using Spacy 3.0 and the visual output was created using the StreamLit platform. All code written to train each branch model of GWAS-MNER was done so in Python 3.8. Finally, the datasets used for machine learning were initially curated through AutoCORPus, after which they were extensively sorted and adapted for training SpaCy 3.0 pipelines.")
+        st.markdown("**General workflow of Project 2: GWAS-MNER**  \n\n.")
       
         empty=False
         
@@ -115,7 +113,7 @@ def main():
           st.subheader("Abstract")
 
           link = 'Source code: https://github.com/nick-mcq/GWAS-MNER'
-          st.write("""Recent advances in the availability of improved natural language processing (NLP) algorithms and models, ontologies that describe phenotypes, and different open source tools for annotation of text, enables text mining to be applied to GWAS publications to identify and extract all available association data and important genome wide association studies' (GWAS) metadata (i.e. data that describe the association data). GWAS-MNER is the culmination of these advancements; this natural language processing (NLP) tool was developed to use named entity recognition (NER) as a method for identifying key metadata elements in scientific texts specifically pertinent to GWAS. """)
+          st.write("""In the context of genome wide association studies (GWAS), reproducibility can prove to be a valuable attribute of the published experiments; this inherently calls for a method to obtain all information necessary to confirm, categorise and potentially reproduce data and results of GWAS. New developments in the sphere of machine learning, particularly with natural language processing (NLP) models and algorithms, dedicated to data mining and annotating text documents have presented novel options for the recognition and extraction of key information and metadata from scientific publications. GWAS-MNER is the culmination of these advancements; this NLP tool was developed in Python using spaCy 3.0 named entity recognition (NER) as a method for identifying key metadata elements in scientific texts specifically pertinent to GWAS. This report highlights the development and capabilities of GWAS-MNER, a stand-alone web-tool for the extraction of pertinent information from GWAS publications. """)
           st.markdown(link, unsafe_allow_html=True)
           #st.write('')
           
