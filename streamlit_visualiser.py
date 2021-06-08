@@ -11,6 +11,8 @@ import os
 import streamlit as st
 import spacy_streamlit
 import json
+import altair as alt
+import pandas as pd
 
 #nlp = spacy.load('./output/model-best')
 #doc = nlp('These samples were assayed with Illumina HumanHap550v3 (N  = 44) and Affymetrix Human610-Quadv1 (N  = 27) arrays.')
@@ -79,12 +81,49 @@ def main():
         
         st.subheader("Results")
         
+        st.markdown('**Final branch models: entities and scoring for each branch output**')
     
         st.markdown("After training and testing is complete, 5 working branches were formed for GWAS-MNER. Each branch and their respective entities for which they identify can be seen in Table 1:")
     
         st.image('https://raw.githubusercontent.com/nick-mcq/GWAS-MNER/main/table.PNG', caption='Table 1: GWAS-MNER branches and entity tags. Each branch is specialised to extract specific entities based on the data it was trained and tested with.')
     
         st.markdown("It should be noted that certain entities, such as ‘negation’ and ‘version number’, were added into branches which may benefit from tracking whether statements alluding to *not* performing an action or task, i.e., “we did *not* perform any quality control measures”.")
+    
+        st.markdown("Once finished, each model was given a sample text to verify that it functions as expected. Such an example, which also demonstrates the visualising capabilities of spaCy and Streamlit, can be found in Figure 3. ")
+    
+        st.image('https://raw.githubusercontent.com/nick-mcq/GWAS-MNER/main/example.PNG', caption="Figure 3: Example of spaCy's visualising software. This image captured the format used by spaCy to showcase when the GWAS-MNER model successfully identifies and tags an entity in a sample text. In this case, the QC (quality control) branch was selected for entity recognition.")
+    
+        st.markdown("However, while anecdotal evidence helped to verify user functionality, each branch was also scored by the spaCy software during the testing phase, allowing for overall comparison of branch quality. These scores helped shape updates and improvements to the datasets used for training, with a perfect (and mostly unattainable) score of 1.00. These aforementioned scores can be found in the below altair plot, which can be enlarged and is downloadable in a number of formats.")
+    
+        
+    
+        source = pd.DataFrame({
+    'Branch Model': ['Platform', 'Total SNPs', 'Assays', 'QC', 'Imputation'],
+    'spaCy Score': [1.00, 0.89, 0.82, 0.98, 0.95]
+})
+    
+        chart = alt.Chart(source).mark_bar().encode(
+    x='Branch Model',
+    y='spaCy Score'
+)
+        
+        
+        text = chart.mark_text(
+    align='center',
+    baseline='middle',
+    dy=-13,
+    
+).encode(
+    text='spaCy Score'
+)
+    
+       
+    
+        st.altair_chart(chart + text, use_container_width=True)
+        
+        st.markdown('**Functional web-tool deployment with integrated NER pipelines**')
+        
+        st.markdown('Despite the importance of the previously discussed results, the true product of this project is most evidently observable through active use of the finalised web-tool. I encourage the reader to consider using the navigational dropdown menu on the left-hand side to switch over to the “NER web-tool” tab, which will redirect to a new page where the different branches are active. Note that a second drop-down menu will also appear: this allows the user to switch between branch models, thereby updating the web-page automatically based on the new selection. Once a branch model has been selected, the first text box which appears (which contains by default a sample piece of text) can be edited, thus allowing the user to enter any text from any publication to be tagged by the NER model. Once confirmed, a visualiser resembling Figure 3 will appear with the results, in addition to a data-frame containing the exact numerical indexes of the tagged entities within the text. Moreover, a ‘DOWNLOAD’ button appears at the bottom of the page, which will download the results of the NER in the working directory of the web-tool in JSON format (in fact, two version are downloaded, the raw JSON file and a trimmed JSON file).')
     
         empty=False
     
