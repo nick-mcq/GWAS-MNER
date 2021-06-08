@@ -69,6 +69,10 @@ def main():
         
         st.image('https://raw.githubusercontent.com/nick-mcq/GWAS-MNER/main/branchmodels.PNG', caption="Figure 2: Schematic illustrating the 5 different branches developed for GWAS-MNER. While all branches were trained and tested using the same datasets, labelled entities vary from model to model, as they were designed to identify different metadata elements, with each branch depicting an example of what it attempts to identify.")
       
+        st.markdown("For GWAS-MNER, spaCy 3.0 was chosen to develop the machine learning algorithms. An open-source NLP library accessible through Python, spaCy is known to be remarkably fast and provides some of the most accurate results among similar NLP options (Colic & Rinaldi, 2019). Further, the newest iteration of the library, spaCy 3.0, was released earlier this year, making it the most modern approach to NLP.")
+      
+        st.markdown("**Website Design**  \n\n The chosen third-party application for the development of the website itself is Streamlit, a Python library which can be used to code modifiable elements to form a web=page which can be hosted both locally and through GitHub using streamlit.share. Moreover, Streamlit provides direct compatibility with spaCy through the streamlit.spacy module in Python 3+, allowing for the direct integration of the visualiser to observe NER results obtained by GWAS-MNER.")
+      
         empty=False
         
       if st.sidebar.checkbox("Results"):
