@@ -80,7 +80,11 @@ def main():
         st.subheader("Results")
         
     
-        st.markdown("The resulting NER branches were scored for their overall accuracy in evalutaing second testing set, after learning from the inital testing set. A bar chart was generated to illustrate and compare the scores of each branch model")
+        st.markdown("After training and testing is complete, 5 working branches were formed for GWAS-MNER. Each branch and their respective entities for which they identify can be seen in Table 1:")
+    
+        st.image('https://raw.githubusercontent.com/nick-mcq/GWAS-MNER/main/table.PNG', caption='Table 1: GWAS-MNER branches and entity tags. Each branch is specialised to extract specific entities based on the data it was trained and tested with.')
+    
+        st.markdown("It should be noted that certain entities, such as ‘negation’ and ‘version number’, were added into branches which may benefit from tracking whether statements alluding to *not* performing an action or task, i.e., “we did *not* perform any quality control measures”.")
     
         empty=False
     
