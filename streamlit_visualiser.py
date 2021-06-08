@@ -56,14 +56,17 @@ def main():
         
       if st.sidebar.checkbox("Methods & Materials"):
         
-        st.subheader("Methods")
+        st.subheader("Methods & Materials")
         
     
-        st.markdown("**General workflow of Project 2: GWAS-MNER**  \n\n")
+        st.markdown("**General workflow of Project 2: GWAS-MNER**  \n\n Below is a simple workflow (Figure 1) depicting how Project 2 was structured in terms of dataset curation, model training and testing, as well as the final user-friendly product.")
         
-        with open('workflow.PNG') as in_file:
-            
-            st.image('https://raw.githubusercontent.com/nick-mcq/GWAS-MNER/main/workflow.PNG')
+        st.image('https://raw.githubusercontent.com/nick-mcq/GWAS-MNER/main/workflow.PNG', caption="Figure 1: GWAS-MNER overall workflow. This flowchart highlights the development process of the GWAS-MNER web-tool, from its inception with specially curated publications, to the final product open to all users on this website. Named entity recognition (NER) models were trained and tested on the command-line in Bash, with the final pipelines being deployed in Python 3.8.5.")
+        
+        st.markdown("**Dataset Curation & Extraction**  \n\n In order to obtain a working NER model, a comprehensive amount of data, with specifically labelled entities for the model to recognise later, is required. This data was obtained through the use of AutoCORPus, which allowed for the automatic curation and extraction of Methods & Materials sections for 1200 PubMed GWAS publications. The resulting output consisted of JSON files which can be further parsed manually.  \n\n Following initial automatic data curation, entities of interest were labelled individually based on pattern recognition using Regular Expressions (RegEx) in Python 3.8.5. These patterns were able to pick up any keywords, in addition to labelling their start and end characters in the analysed string.  \n\n Following these two data collection steps, indicated in Figure 1, the 1200 publications were divided into a training set (composed of the first 700 papers) and a testing set (composed of the remaining 500 papers) to develop the machine learning models.")
+        
+        st.markdown("**NER “branch models” approach: training & testing models**  \n\n In the given timeframe to complete the project, the most logical approach in developing GWAS-MNER consisted of splitting the tool into 5 relevant branches depending on which entities the user wants to identify. These separate branches are described in Figure 2, highlighting this modular approach to using machine learning in metadata extraction.")
+        
         
       
         empty=False
