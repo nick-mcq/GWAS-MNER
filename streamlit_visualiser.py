@@ -93,7 +93,7 @@ def main():
     
         st.image('https://raw.githubusercontent.com/nick-mcq/GWAS-MNER/main/example.PNG', caption="Figure 3: Example of spaCy's visualising software. This image captured the format used by spaCy to showcase when the GWAS-MNER model successfully identifies and tags an entity in a sample text. In this case, the QC (quality control) branch was selected for entity recognition.")
     
-        st.markdown("However, while anecdotal evidence helped to verify user functionality, each branch was also scored by the spaCy software during the testing phase, allowing for overall comparison of branch quality. These scores helped shape updates and improvements to the datasets used for training, with a perfect (and mostly unattainable) score of 1.00. These aforementioned scores can be found in the below altair plot, which can be enlarged and is downloadable in a number of formats.")
+        st.markdown("However, while anecdotal evidence helped to verify user functionality, each branch was also scored by the spaCy software during the testing phase, allowing for overall comparison of branch quality. These scores helped shape updates and improvements to the datasets used for training, with a perfect (and mostly unattainable) score of 1.00. These aforementioned scores can be found in the bar chart below (Figure 4), which can be enlarged and is downloadable in a number of formats.")
     
         
     
@@ -115,6 +115,8 @@ def main():
     
 ).encode(
     text='spaCy Score'
+).properties(
+    title='Figure 4: Bar chart comparing spaCy scoring of each "best" branch model'
 )
     
        
@@ -131,9 +133,14 @@ def main():
         
         st.subheader("Discussion")
         
+        st.markdown('**Argument for the use of machine-learning based curation in GWAS data**')
     
-        st.markdown("The accuracy of a branch can be directly correlated with the complexity of the entity with which a label is associated, as it results in more likely cases of confusion within the algorithms predetermined parameters. However, these are all variables which can be adjusted by the developper, which points towards potential for perfecting, when there is sufficient time to do so. Overall, the use of NLP and NER in particular could prove hugely valuable in automatically scraping key data for further work or documentation; the important distinction to be made in the case of this tool is that which data the user requests is customisable, opening up new possibilities in terms of user-orientated machine learning-driven results")
-    
+        st.markdown("Manual curation of GWAS metadata can be considered laborious, particularly when dealing with a large scale of publications, time consuming and subject to individual variability, such that an individual may format their results in a unique manner, whereas machine-driven programs have been trained to produce a single, uniform output which can then be reintegrated into further systems, data analysis or stored in larger centralised databases. In fact, some attempts at automating data curation in GWAS have already been made, with relative success in terms of model predictions (Kuleshov et al., 2019). It is therefore evident that an avenue is presenting itself for the introduction of algorithms in aiding the effort to curate and parse through data obtained from bioscience-related publications. For example, a database such as GWAS Central (Beck, Shorter & Brookes, 2020) could make great use of the results obtained through GWAS-MNER. Overall, the use of NLP and NER in particular could prove hugely valuable in automatically scraping key data for further work or documentation; the important distinction to be made in the case of this tool is that which data the user requests is customisable, opening up new possibilities in terms of individual user-orientated machine learning-driven results.")
+        
+        st.markdown('**Limitations in GWAS-MNER: discrepancy in branch scores and size of model outputs**')
+        
+        st.markdown("The accuracy of a branch can be directly correlated with the complexity of the entity with which a label is associated, as it results in more likely cases of confusion within the algorithm's predetermined Regular Expression parameters, often resulting in data being omitted to prevent fatal errors. However, these are all variables which can be adjusted by the developer, which points towards potential for perfecting, when there is sufficient time to do so. In the context of this project, for example, the Assays branch (Figure 4) presents with a significantly lower score than the Platform branch, at 0.82 compared to 1.00; this discrepancy in scoring is not only due to the data used for training the Assays branch being significantly more complex, but also due to this branch being the last one created in the Project 2 timeline, meaning it had the least time for improvement and quality control. Moreover, a NER tool requires a significant amount of valid training and testing data to accurately label correct entities: it could be argued that much more data is required for a truly high-performance output to be generated.")
+        
         empty=False
     
       if st.sidebar.checkbox("Future Work"):
@@ -141,7 +148,7 @@ def main():
         st.subheader("Future Work")
         
     
-        st.markdown("Due to the time constraints imposed upon this project, an initially proposed multi-model version of the algorithm was not produced, such that it would combine all branches into one algorithm searching for all entities simultaneously. Further, the lack of data in regards to Perlegen assays proved detrimental in providing the algorithm with sufficient data for recognising such assays. Overall, there is room for improvement in every single branch; expanding the datasets fed into the program would prove valuable in furthering the capabilities of GWAS-MNER.")
+        st.markdown("Due to the time constraints imposed upon this project, an initially proposed multi-model version of the algorithm was not produced, such that it would combine all branches into one algorithm searching for all entities simultaneously. This combined branch model would be much easier to deploy online and could provide streamlined results, although its accuracy relative to the current separate branch version would need to be benchmarked. Further, the lack of data in regards to Perlegen assays proved detrimental in providing the algorithm with sufficient data for recognising such assays: there is a lack of older publications in the training datasets which cover potentially antiquated assays and platforms such as with Perlegen. Overall, there is room for improvement in every single branch; expanding the datasets fed into the program would prove valuable in furthering the capabilities of GWAS-MNER. In essence, the short nature of the project did not leave much room for progression, rather a finished version of each branch was prioritised.")
     
         empty=False
         
@@ -150,7 +157,7 @@ def main():
         st.subheader("Conclusion")
         
     
-        st.markdown("In conclusion, this web-tool was developed using the output produced from the AutoCORPus program (reference needed), following an extensive curation and refinement process, to learn and accurately label key metadata in any scientific text on the topic of GWAS. Moreover, this process could be adapted for publications covering other topics, or even multiple topics, based on how much data is fed into the NLP algorithm.")
+        st.markdown("To summarise, this project proposed a machine-learning tool which is capable of identifying and extracting key metadata from GWAS publications in a structured manner, such that the subsequent output can be integrated further downstream. The results are promising, although there is much room for improvement and perfection of the branch models showcased in this report; nevertheless, this system opens the door to the world of automated curation of biomedical literature, thereby providing an efficient and organised method of synthesising key methods to the benefit of the user. Finally, it should be mentioned that this web-tool’s design was made possible using the impressive, automated extracting power of AutoCORPus, highlighting GWAS-MNER as a prime example of an NLP-based algorithm which benefitted from its utility. Moreover, this process could be adapted for publications covering other topics, or even multiple topics, based on how much data is available.")
     
         empty=False
     
@@ -159,7 +166,7 @@ def main():
         st.subheader("References")
         
     
-        st.markdown("The following references were used in this project:")
+        st.markdown("Beck, T., Shorter, T. & Brookes, A.J. (2020) GWAS Central: a comprehensive resource for the discovery and comparison of genotype and phenotype data from genome-wide association studies. Nucleic Acids Research. [Online] 48 (D1), D933–D940. Available from: doi:10.1093/nar/gkz895.  \n\n Colic, N. & Rinaldi, F. (2019) Improving spaCy dependency annotation and PoS tagging web service using independent NER services. Genomics & Informatics. [Online] 17 (2). Available from: doi:10.5808/GI.2019.17.2.e21 [Accessed: 8 June 2021].  \n\n Hu, Y., Sun, S., Rowlands, T., Beck, T., et al. (2021) Auto-CORPus: Automated and Consistent Outputs from Research Publications. bioRxiv. [Online] 2021.01.08.425887. Available from: doi:10.1101/2021.01.08.425887.  \n\n Kuleshov, V., Ding, J., Vo, C., Hancock, B., et al. (2019) A machine-compiled database of genome-wide association studies. Nature Communications. [Online] 10. Available from: doi:10.1038/s41467-019-11026-x [Accessed: 8 June 2021].")
     
         empty=False
         
