@@ -67,7 +67,7 @@ def main():
         
         st.markdown("**NER “branch models” approach: training & testing models**  \n\n In the given timeframe to complete the project, the most logical approach in developing GWAS-MNER consisted of splitting the tool into 5 relevant branches depending on which entities the user wants to identify. These separate branches are described in Figure 2, highlighting this modular approach to using machine learning in metadata extraction.")
         
-        st.image('https://raw.githubusercontent.com/nick-mcq/GWAS-MNER/main/branches.PNG', caption="Figure 2: Schematic illustrating the 5 different branches developed for GWAS-MNER. While all branches were trained and tested using the same datasets, labelled entities vary from model to model, as they were designed to identify different metadata elements, with each branch depicting an example of what it attempts to identify.")
+        st.image('https://raw.githubusercontent.com/nick-mcq/GWAS-MNER/main/branchmodels.PNG', caption="Figure 2: Schematic illustrating the 5 different branches developed for GWAS-MNER. While all branches were trained and tested using the same datasets, labelled entities vary from model to model, as they were designed to identify different metadata elements, with each branch depicting an example of what it attempts to identify.")
       
         empty=False
         
