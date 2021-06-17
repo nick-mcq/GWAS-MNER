@@ -199,7 +199,10 @@ def main():
           st.markdown(link, unsafe_allow_html=True)
           #st.write('')
           
-      
+      st.sidebar.text('')
+      st.sidebar.text('')
+      st.sidebar.text('')
+      st.sidebar.markdown('© Website created by Nicholas McQuibban. All rights reserved.')
     
     elif choice == "NER web-tool":
       st.subheader("Named Entity Recognition")
